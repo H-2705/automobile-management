@@ -4869,3 +4869,17 @@ td {
     min-width: 0;
   }
 }
+.innova-banner {
+  width: 100%;
+  margin-bottom: 24px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.innova-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}

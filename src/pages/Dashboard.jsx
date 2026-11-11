@@ -1,4 +1,6 @@
 
+import innovaHire from "../assets/innova-for-hire.png";
+
 import {
   Car,
   Users,
@@ -26,6 +28,7 @@ import {
   Cell,
 } from "recharts";
 
+// Dashboard statistics
 const stats = [
   {
     title: "Total Vehicles",
@@ -61,6 +64,7 @@ const stats = [
   },
 ];
 
+// Monthly trips and revenue
 const monthlyData = [
   { month: "Jan", trips: 320, revenue: 240 },
   { month: "Feb", trips: 450, revenue: 320 },
@@ -76,6 +80,7 @@ const monthlyData = [
   { month: "Dec", trips: 850, revenue: 650 },
 ];
 
+// Vehicle distribution
 const vehicleData = [
   { name: "Active", value: 980, color: "#2563eb" },
   { name: "In Maintenance", value: 45, color: "#f59e0b" },
@@ -83,6 +88,7 @@ const vehicleData = [
   { name: "Inactive", value: 45, color: "#94a3b8" },
 ];
 
+// Recent trips
 const trips = [
   {
     id: "TRP-1001",
@@ -114,6 +120,7 @@ const trips = [
   },
 ];
 
+// Maintenance alerts
 const maintenance = [
   {
     vehicle: "KA 05 AB 1234",
@@ -138,8 +145,10 @@ const maintenance = [
   },
 ];
 
+// Statistics card component
 function StatCard({ item }) {
   const Icon = item.icon;
+
   const TrendIcon =
     item.trend === "down" ? ArrowDownRight : ArrowUpRight;
 
@@ -171,6 +180,7 @@ function StatCard({ item }) {
   );
 }
 
+// Chart tooltip
 function CustomChartTooltip({ active, payload, label }) {
   if (!active || !payload || !payload.length) {
     return null;
@@ -186,6 +196,7 @@ function CustomChartTooltip({ active, payload, label }) {
             className="tooltip-dot"
             style={{ background: item.color }}
           />
+
           {item.name === "trips" ? "Trips" : "Revenue"}:{" "}
           <strong>{item.value}</strong>
         </div>
@@ -208,6 +219,7 @@ export default function Dashboard({ onNavigate }) {
       <div className="dashboard-welcome">
         <div>
           <h2>Fleet Overview</h2>
+
           <p>
             Monitor your vehicles, drivers and transportation operations.
           </p>
@@ -222,7 +234,15 @@ export default function Dashboard({ onNavigate }) {
         </button>
       </div>
 
-      {/* Summary cards */}
+      {/* Innova For Hire Banner */}
+      <div className="innova-banner">
+        <img
+          src={innovaHire}
+          alt="Toyota Innova Crysta For Hire"
+        />
+      </div>
+
+      {/* Summary Cards */}
       <div className="stats-grid">
         {stats.map((item) => (
           <StatCard key={item.title} item={item} />
@@ -281,6 +301,7 @@ export default function Dashboard({ onNavigate }) {
                       stopColor="#2563eb"
                       stopOpacity={0.22}
                     />
+
                     <stop
                       offset="95%"
                       stopColor="#2563eb"
@@ -300,6 +321,7 @@ export default function Dashboard({ onNavigate }) {
                       stopColor="#10b981"
                       stopOpacity={0.18}
                     />
+
                     <stop
                       offset="95%"
                       stopColor="#10b981"
@@ -405,7 +427,9 @@ export default function Dashboard({ onNavigate }) {
                   {item.name}
                 </span>
 
-                <strong>{item.value.toLocaleString("en-IN")}</strong>
+                <strong>
+                  {item.value.toLocaleString("en-IN")}
+                </strong>
               </div>
             ))}
           </div>
@@ -524,6 +548,7 @@ export default function Dashboard({ onNavigate }) {
           Sample demonstration data
         </span>
       </div>
+
     </div>
   );
 }
